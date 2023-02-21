@@ -1,18 +1,17 @@
 #include "main.h"
-#include <stdio.h>
 /**
- * main - prints _putchar, followed by a new line
- * Return: Alawys 0 (Success)
+ * main - prints Putchar, followed by a new line
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
-	char abc[] = "_putchar";
+	char mno[] = "_putchar";
 
-	int d;
+	int p;
 
-	for (d = 0; d < 8; d++)
+	for (p = 0; p < 8; p++)
 	{
-		_putchar(abc[d]);
+		_putchar(mno[p]);
 	}
 	_putchar('\n');
 	return (0);
