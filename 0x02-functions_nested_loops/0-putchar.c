@@ -10,7 +10,7 @@ int main(void)
 
 	int d;
 
-	for (d = 0; d < 7; d++)
+	for (d = 0; d < 8; d++)
 	{
 		_putchar(abc[d]);
 	}
