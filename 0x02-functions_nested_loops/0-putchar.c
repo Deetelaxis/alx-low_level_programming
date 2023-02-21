@@ -1,17 +1,17 @@
-#include "main.h"  
+#include "main.h"
 /**
- * main - prints _putchar, followed by a new line
- * Return: Alawys 0 (Success)
+ * main - prints _putchar, fllowd by a new linees
+ * Return: Alwys 0 (Success)
  */
 int main(void)
 {
-	char day[] = "_putchar";
+	char abe[] = "_putchar";
 
-	int o;
+	int c;
 
-	for (o = 1; 0 < 8; o++)
+	for (c = 0; c < 8; c++)
 	{
-		_putchar(day[o]);
+		_putchar(abe[c]);
 	}
 	_putchar('\n');
 	return (0);
