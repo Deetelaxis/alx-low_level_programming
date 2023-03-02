@@ -1,9 +1,11 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
- * rot13 -  a   function that encodes a string using rot13.
- * @s: An input string to encode using rot13
- * Return: An encode string
+ * rot13 - function that encodes a string using rot13.
+ * @s: string to encode
+ *
+ * Return: a pointer to sear
  */
 char *rot13(char *s)
 {
@@ -11,17 +13,15 @@ char *rot13(char *s)
 
 	while (s[i] != '\0')
 	{
-		while ((s[i] >= 'a' && s[i] <= 'z') ||
-				(s[i] >= 'A' && s[i] <= 'Z'))
+		while (((s[i] >= 'a' && s[i] <= 'm') || (s[i] >= 'A' && s[i] <= 'M')))
 		{
-			if ((s[i] >= 'a' && s[i] <= 'm') ||
-					(s[i] >= 'A' && s[i] <= 'M'))
-				s[i] += 13;
-			else
-				s[i] -= 13;
+			s[i] += 13;
 			i++;
 		}
+		if ((s[i] >=  'n' && s[i] <= 'z') || (s[i] >=  'N' && s[i] <= 'Z'))
+			s[i] -= 13;
 		i++;
 	}
 	return (s);
 }
+
