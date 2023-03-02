@@ -1,32 +1,21 @@
 #include "main.h"
 
 /**
- * print_number - prints number
- * @n: the number to process.
+ * main - check the code for Alx students.
  *
+ * Return: Always 0.
  */
-void print_number(int n)
+int main(void)
 {
-	unsigned int num;
-
-	if (n < 10 && n >= 0)
-	{
-		_putchar('0' + n);
-		return;
-	}
-	if (n < 0)
-	{
-		num = -n;
-		_putchar('-');
-	}
-	else
-	{
-		num = n;
-	}
-
-	if (num >= 10)
-	{
-		print_number(num / 10);
-	}
-	_putchar('0' + (num % 10));
+	print_number(98);
+	_putchar('\n');
+	print_number(402);
+	_putchar('\n');
+	print_number(1024);
+	_putchar('\n');
+	print_number(0);
+	_putchar('\n');
+	print_number(-98);
+	_putchar('\n');
+	return (0);
 }
