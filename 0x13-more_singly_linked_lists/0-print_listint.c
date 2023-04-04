@@ -1,20 +1,21 @@
-#include "holberton.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "lists.h"
+
 /**
- *print_listint - prints all elements of a print_listint list
- *@h:pointer to a listint struct
- *Return:no. of nodes
+ * print_listint - prints all the elements of a linked list
+ * @h: linked list of type listint_t to print
+ *
+ * Return: number of nodes
  */
 size_t print_listint(const listint_t *h)
 {
-	unsigned int i;
+	size_t num = 0;
 
-	while (h != NULL)
+	while (h)
 	{
-		printf("%i", h->n);
-		i++;
+		printf("%d\n", h->n);
+		num++;
 		h = h->next;
 	}
-	return (i);
+
+	return (num);
 }
