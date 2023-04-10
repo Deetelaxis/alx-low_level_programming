@@ -51,7 +51,6 @@ void print_magic(unsigned char *e_ident)
 int index;
 
 printf("  Magic:   ");
-
 for (index = 0; index < EI_NIDENT; index++)
 {
 printf("%02x", e_ident[index]);
@@ -182,7 +181,7 @@ printf("<unknown: %x>\n", e_ident[EI_OSABI]);
  */
 void print_abi(unsigned char *e_ident)
 {
-printf("  ABI Version:              %d\n",
+printf("  ABI Version:                       %d\n",
 e_ident[EI_ABIVERSION]);
 }
 
@@ -307,7 +306,6 @@ print_osabi(header->e_ident);
 print_abi(header->e_ident);
 print_type(header->e_type, header->e_ident);
 print_entry(header->e_entry, header->e_ident);
-
 free(header);
 close_elf(o);
 return (0);
