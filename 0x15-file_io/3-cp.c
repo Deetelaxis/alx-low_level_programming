@@ -2,51 +2,48 @@
 
 /**
  * main - copies the content of a file to another file
- * @argc: number of arguments passed to the program
- * @argv: array of arguments
- *
- * Return: Always 0 (Success)
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: 0 if success
  */
+
 int main(int argc, char *argv[])
 {
-	int fd_r, fd_w, x, m, n;
-	char buf[BUFSIZ];
+	int _file1, _file2, _read, c1, c2;
+	char buffer[1024];
 
 	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
-		exit(97);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
 	}
-	fd_r = open(argv[1], O_RDONLY);
-	if (fd_r < 0)
+	_file1 = open(argv[1], O_RDONLY);
+	if (_file1 < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	fd_w = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	while ((x = read(fd_r, buf, BUFSIZ)) > 0)
+	_file2 = open(argv[2], O_TRUNC | O_CREAT | O_WRONLY, 0664);
+	while ((_read = read(_file1, buffer, 1024)) > 0)
 	{
-		if (fd_w < 0 || write(fd_w, buf, x) != x)
+		if (_file2 < 0 || (write(_file2, buffer, _read) != _read))
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			close(fd_r);
-			exit(99);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
 		}
 	}
-	if (x < 0)
+	if (_read < 0)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	m = close(fd_r);
-	n = close(fd_w);
-	if (m < 0 || n < 0)
+	c1 = close(_file1);
+	if (c1 < 0)
 	{
-		if (m < 0)
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_r);
-		if (n < 0)
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_w);
-		exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", _file1), exit(100);
+	}
+	c2 = close(_file2);
+	if (c2 < 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", _file2), exit(100);
 	}
 	return (0);
 }
